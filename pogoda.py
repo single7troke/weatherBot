@@ -47,13 +47,10 @@ def weather(message: types.Message):
         bot.send_message(message.chat.id, 'Я не смог найти такой город 😕\nПопробуй еще раз')
 
 
-def weather_request(x):
+def weather_request(city):
     try:
         api = config.weather_api
-        res = requests.get(f'http://api.openweathermap.org/data/2.5/weather?q={x}&appid={api}&lang=ru')
-        print(res.text)
-        print(res.json())
-        print(res)
+        res = requests.get(f'http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api}&lang=ru')
         data = res.json()
         return data
     except:
